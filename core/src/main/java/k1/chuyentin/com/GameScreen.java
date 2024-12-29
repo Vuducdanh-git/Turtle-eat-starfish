@@ -54,6 +54,9 @@ public class GameScreen implements Screen {
     String text;
     BitmapFont font;
     int e = 3;
+    int huo = 0;
+    int x = 3;
+    float y =0;
     public GameScreen(Master game){
         this.game = game;
         text = "StarFish: " + p2;
@@ -99,12 +102,21 @@ public class GameScreen implements Screen {
     }
     @Override
     public void render(float v) {
+        shark.moveBy(x,y );
 
-
+        if (shark.getX() > 600){
+            x =-3;
+            shark.setScaleX(-1);
+            y = MathUtils.random(-2,2);
+        }
+        if (shark.getX() < 0){
+            x =3;
+            shark.setScaleX(1);
+            y = MathUtils.random(-2,2);
+        }
         ScreenUtils.clear(Color.DARK_GRAY);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-
         stage.act();
         stage.draw();
         batch.begin();
@@ -112,10 +124,10 @@ public class GameScreen implements Screen {
         batch.end();
         p2 = 5 - point;
         text = "StarFish:" + p2;
+
         if(point == 5){
             win.setPosition(120,200);
         }
-
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             turtle.rotateBy(2);
         }

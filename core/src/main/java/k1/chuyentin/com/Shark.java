@@ -16,8 +16,9 @@ public class Shark extends Actor {
         apps.addActor(this);
     }
 
+
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        batch.draw(shark,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight(),1,1,getRotation());
+        batch.draw(shark,getX(),getY(),getOriginX(),getOriginY(),getWidth(),getHeight(),getScaleX(),getScaleY(),getRotation());
     }
 }
