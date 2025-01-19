@@ -72,9 +72,7 @@ public class MenuScreen implements Screen {
         Gdx.input.setInputProcessor(game.buttonStage);
 
         sc = new Texture(Gdx.files.internal("sc.png"));
-
     }
-
     @Override
     public void render(float v) {
         ScreenUtils.clear(Color.GRAY);
